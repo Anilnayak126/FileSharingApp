@@ -35,8 +35,8 @@ A robust file-sharing application built using **Django** and **Django REST Frame
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/file-sharing-app.git
-   cd file-sharing-app
+   https://github.com/Anilnayak126/FileSharingApp.git
+   cd FileSharingApp
 
 
 
@@ -96,7 +96,7 @@ file-sharing-app/
 
 
 ### Instructions
-1. Replace `https://github.com/your-username/file-sharing-app.git` with the actual URL of your GitHub repository.
+1. Replace `https://github.com/Anilnayak126/FileSharingApp.git` with the actual URL of your GitHub repository.
 2. Update the email address in the contact section to your actual email.
 3. Save this content as `README.md` in your project directory.
 
