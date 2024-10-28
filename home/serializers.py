@@ -12,6 +12,11 @@ class FileListSerializer(serializers.Serializer):
     def zip_files(self, folder):
         folder_path = os.path.join('public/static', str(folder.uid))  # Adjusted path
         zip_path = os.path.join('public/static/zip', str(folder.uid))  # Adjusted path for the zip file
+
+        
+        os.makedirs(folder_path, exist_ok=True)
+
+        
         shutil.make_archive(zip_path, 'zip', folder_path)
 
     def create(self, validated_data):
@@ -23,5 +28,7 @@ class FileListSerializer(serializers.Serializer):
             files_obj = Files.objects.create(folder=folder, file=file)
             files_objs.append(files_obj)
 
-         # Call to create the zip file
+        
+        self.zip_files(folder) 
+
         return {'files': {}, 'folder': str(folder.uid)}
