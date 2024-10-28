@@ -18,7 +18,7 @@ A robust file-sharing application built using **Django** and **Django REST Frame
 
 - **Backend**: Django, Django REST Framework, `shutil` for ZIP functionality
 - **Frontend**: HTML, CSS
-- **Database**: SQLite (or replaceable with PostgreSQL/MySQL for production)
+- **Database**: SQLite3
 
 ---
 
