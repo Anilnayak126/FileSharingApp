@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Files</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4a90e2, #50c878);
+            color: #333;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .name-animation {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+            font-size: 3em;
+            color: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            width: 40px; 
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #50c878;
+        }
+
+        
+        .download-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 0.7s ease-out;
+            z-index: 1;
+        }
+
+        
+        .download-container h1 {
+            font-size: 1.8em;
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        
+        .download-btn {
+            display: inline-block;
+            background-color: #50c878;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 1em;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn:hover {
+            background-color: #45b069;
+        }
+
+        /* Input styling */
+        .input-field {
+            margin-top: 15px;
+            padding: 10px;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            font-size: 1em;
+            width: calc(100% - 30px); /* Adjust width */
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #50c878;
+            outline: none;
+        }
+
+        /* Success message styling */
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            color: #50c878;
+            font-size: 1.2em;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 90%; height:50px; margin-left:20px; padding: 10px; display: flex; justify-content: space-between;" class="navbar">
+        
+        <div style="font-size: 30px;"> Anil's FileHub</div> 
+        <div style="display:flex; float: right;">
+            
+            <a href="https://github.com/Anilnayak126" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/anil-kumar-nayak/" target="_blank">LinkedIn</a>
+        </div><!-- Your app name -->
+    </div>
+    
+    <div class="download-container">
+        <h1>Download Your Files</h1>
+        <a href="{{ zip_path }}" download class="download-btn" onclick="showSuccessMessage()">Click here to download your files</a>
+        <div class="success-message" id="successMessage">Download started successfully!</div>
+    </div>
+    <div class="name-animation">Anil's FileHub - Anil's FileHub - Anil's FileHub - Anil's FileHub</div>    
+
+    <footer style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: #fff; font-size: 0.9em;">
+        <p>Crafted with dedication by <strong>Anil Kumar Nayak</strong>. Empowering seamless file management with ease and elegance.</p>
+    </footer>
+    
+    <script>
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

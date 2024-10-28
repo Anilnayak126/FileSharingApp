@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anil's FileHub</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4a90e2, #50c878);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            overflow: hidden;
+        }
+
+        
+        .name-animation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 2.5em;
+            color: rgba(255, 255, 255, 0.1);
+            animation: scroll 25s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        
+        .navbar {
+            position: absolute;
+            top: 20px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+            animation: slideDown 0.8s ease forwards 0.5s;
+        }
+
+        @keyframes slideDown {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .navbar h1 {
+            font-size: 1.8em;
+            color: #4a90e2;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: 600;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .navbar a i {
+            margin-right: 5px;
+        }
+
+        .navbar a:hover {
+            color: #50c878;
+            transform: scale(1.05);
+        }
+
+        
+        .upload-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.6s ease-out;
+        }
+
+        
+        .upload-container h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        /* File input styling */
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+            border: 2px dashed #50c878;
+            border-radius: 5px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="file"]:hover {
+            border-color: #4a90e2;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #50c878;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45b069;
+        }
+
+        /* Download link container */
+        .download-link-container {
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        /* Copy button styling */
+        .copy-btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 0.9em;
+        }
+
+        .copy-btn:hover {
+            background-color: #3b76c1;
+        }
+
+       
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="name-animation">Anil's FileHub - Anil's FileHub - Anil's FileHub - Anil's FileHub</div>
+    
+    <div class="navbar">
+        
+        <h1>
+            Anil's FileHub
+        </h1>
+        <div style="display: flex;">
+            <a href="https://github.com/Anilnayak126" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/anil-kumar-nayak/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </div>
+    
+    <div class="upload-container">
+        <h1>Upload Your Files</h1>
+        <form method="post" enctype="multipart/form-data" id="fileUploadForm">
+            {% csrf_token %}
+            <input type="file" name="files" multiple required id="fileUpload">
+            <button type="submit">Upload</button>
+        </form>
+        
+        {% if download_link %}
+        <div class="download-link-container">
+            <p>Share this link with the receiver:</p>
+            <input type="text" id="downloadLink" value="{{ download_link }}" readonly style="width: 70%; padding: 5px; border: 1px solid #ccc; border-radius: 5px;">
+            <button class="copy-btn" onclick="copyLink()">Copy URL</button>
+        </div>
+        {% endif %}
+    </div>
+        
+        <footer style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: #fff; font-size: 0.9em;">
+            <p>Crafted with dedication by <strong>Anil Kumar Nayak</strong>. Empowering seamless file management with ease and elegance.</p>
+        </footer>
+    
+
+    <script>
+        function copyLink() {
+            var copyText = document.getElementById("downloadLink");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            navigator.clipboard.writeText(copyText.value);
+            alert("Copied the link: " + copyText.value);
+        }
+    </script>
+</body>
+</html>

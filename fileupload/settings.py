@@ -39,7 +39,7 @@ ROOT_URLCONF = 'fileupload.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,6 +105,8 @@ STATICFILES_DIR = {
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'public/static') 
 MEDIA_URL = '/media/'
 '''
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
  
@@ -115,3 +117,12 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+'''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.yahoo.com'  # Yahoo SMTP server
+EMAIL_PORT = 587  # Use 587 for TLS
+EMAIL_USE_TLS = True  # Use TLS
+EMAIL_HOST_USER = 'nayak._official@yahoo.com'  # Your Yahoo email address
+EMAIL_HOST_PASSWORD = '' 
+'''
