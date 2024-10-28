@@ -41,12 +41,22 @@ A robust file-sharing application built using **Django** and **Django REST Frame
 
 
 2. **Backend Setup**
-  - Install the necessary dependencies
-    ```bash
+   - Create a virtual environment (optional but recommended):
+   ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+- Install the necessary dependencies
+   ```bash
     pip install -r requirements.txt
+ - Set up the database and run migrations:
  ```bash
     python manage.py migrate
 ```
+- Create a superuser to access the admin panel (optional):
+```bash
+python manage.py createsuperuser
+```
+- Start the Django development server:
 ```bash
 python manage.py runserver
 ```
